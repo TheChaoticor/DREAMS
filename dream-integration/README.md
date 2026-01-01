@@ -4,34 +4,34 @@ This project lays the complete groundwork — a strong and functional base varia
 
 ## Current Status
 
-- Project structure, sample data folders, virtual environment, and requirements file created.  
-- Audio transcript generation using [OpenAI Whisper](https://github.com/openai/whisper).  
-- Text emotion scoring using DistilBERT; results stored in structured format (`analysis-*/text_scores.json`).  
-- Image sentiment analysis integrated using DeepFace.  
-- Unified **analysis pipeline** in Flask:  
-  - Transcription → Text analysis → Image analysis.  
-  - Handles missing transcripts, avoids overwriting, ensures consistent output storage.  
-- **Radar chart visualization** added for comparing text vs image emotions.  
-- Progress bars and collapsible raw JSON views included in UI.  
+- Project structure, sample data folders, virtual environment, and requirements file created.
+- Audio transcript generation using [OpenAI Whisper](https://github.com/openai/whisper).
+- Text emotion scoring using DistilBERT; results stored in structured format (`analysis-*/text_scores.json`).
+- Image sentiment analysis integrated using DeepFace.
+- Unified **analysis pipeline** in Flask:
+  - Transcription → Text analysis → Image analysis.
+  - Handles missing transcripts, avoids overwriting, ensures consistent output storage.
+- **Radar chart visualization** added for comparing text vs image emotions.
+- Progress bars and collapsible raw JSON views included in UI.
 
 ## Tools Used
 
-- Whisper (for audio transcription)  
-- HuggingFace Transformers + DistilBERT (for text emotion scoring)  
-- Torch (PyTorch backend)  
-- DeepFace (for facial emotion/sentiment analysis)  
-- Flask + Chart.js (for web UI & visualization)  
-- Python 3.x, Virtualenv  
+- Whisper (for audio transcription)
+- HuggingFace Transformers + DistilBERT (for text emotion scoring)
+- Torch (PyTorch backend)
+- DeepFace (for facial emotion/sentiment analysis)
+- Flask + Chart.js (for web UI & visualization)
+- Python 3.x, Virtualenv
 
 ## Project Folder Highlights
 
-- `dream-integration/analysis/` → Modular scripts for analyzing text, audio, and image inputs.  
-- `dream-integration/data/person-01/analysis-*/` → Per-user, per-sample emotion scores stored in JSON format.  
+- `dream-integration/analysis/` → Modular scripts for analyzing text, audio, and image inputs.
+- `dream-integration/data/person-01/analysis-*/` → Per-user, per-sample emotion scores stored in JSON format.
 
 ## Future Scope
 
-- Extending the current end-to-end tested implementation (single-person multi-sample) to handle **multi-person multi-sample** analysis.  
-- Visualization can be further enriched into **timeline-based analysis**, to track emotional progression over time. This will be more meaningful when a larger dataset becomes available in the future.  
+- Extending the current end-to-end tested implementation (single-person multi-sample) to handle **multi-person multi-sample** analysis.
+- Visualization can be further enriched into **timeline-based analysis**, to track emotional progression over time. This will be more meaningful when a larger dataset becomes available in the future.
 
 ## Architecture
 
@@ -73,9 +73,11 @@ flowchart LR
     B2 --> F2
     B2 --> F3
 ```
+
 ### Workflow (Step-by-Step)
 
 Below is a step-by-step pipeline of how the system works when the user starts analysis:
+
 ```mermaid
 flowchart TD
     A[User clicks Start Analysis] --> B[Backend scans data folder]
@@ -100,9 +102,11 @@ flowchart TD
     M --> O[Show Charts - Radar and Bar]
 ```
 
-## Setup & Contributing  
+## Setup & Contributing
+
 For setup instructions and contributing guidelines, please go through the dedicated file.  
 (Currently working on it, will be added soon.)
 
-## License  
-This project is licensed under the MIT License.  See the [LICENSE](/LICENSE) file for more details.
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](/LICENSE) file for more details.

@@ -27,7 +27,7 @@ def read_text_file(path):
 
 def migrate():
     if not os.path.isdir(DATA_DIR):
-        print("❌ data/ directory not found")
+        print(" data/ directory not found")
         return
 
     for person in os.listdir(DATA_DIR):
@@ -35,7 +35,7 @@ def migrate():
         if not os.path.isdir(person_dir):
             continue
 
-        print(f"\n👤 Migrating person: {person}")
+        print(f"\n Migrating person: {person}")
 
         users_col.update_one(
             {"person_id": person},
@@ -51,7 +51,7 @@ def migrate():
             if not os.path.isdir(sample_dir):
                 continue
 
-            print(f"  📦 Sample: {sample}")
+            print(f"   Sample: {sample}")
 
             image_id = None
             audio_id = None
@@ -67,28 +67,28 @@ def migrate():
 
                 if ext in IMAGE_EXTS:
                     image_id = store_file_gridfs(path)
-                    print(f"    🖼 Image stored: {file}")
+                    print(f"     Image stored: {file}")
 
                 elif ext in AUDIO_EXTS:
                     audio_id = store_file_gridfs(path)
-                    print(f"    🔊 Audio stored: {file}")
+                    print(f"     Audio stored: {file}")
 
                 elif ext == ".txt":
                     if name.startswith("transcript"):
                         transcript = read_text_file(path)
-                        print("    📄 Transcript loaded (transcript*)")
+                        print("     Transcript loaded (transcript*)")
 
                     elif name.startswith("clip") and transcript_fallback is None:
                         transcript_fallback = read_text_file(path)
 
                     elif name.startswith("description"):
                         description = read_text_file(path)
-                        print("    📝 Description loaded")
+                        print("     Description loaded")
 
            
             if transcript is None and transcript_fallback is not None:
                 transcript = transcript_fallback
-                print("    📄 Transcript loaded (clip* fallback)")
+                print("     Transcript loaded (clip* fallback)")
 
             samples_col.update_one(
                 {"person_id": person, "sample_id": sample},
@@ -115,7 +115,7 @@ def migrate():
                 if not os.path.isdir(a_dir):
                     continue
 
-                print(f"    📊 Migrating analysis from {a_dir}")
+                print(f"     Migrating analysis from {a_dir}")
 
                 text_scores = {}
                 image_scores = {}
@@ -141,7 +141,7 @@ def migrate():
                         upsert=True
                     )
 
-    print("\n✅ Migration completed successfully.")
+    print("\n Migration completed successfully.")
 
     
 
